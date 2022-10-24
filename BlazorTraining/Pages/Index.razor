@@ -10,12 +10,7 @@
         {
             @foreach (var fruit in _fruitList)
             {
-                <li style="background-image: url('@fruit.ImageUrl')">
-                    <div class="pizza-info">
-                        <span class="title">@fruit.Name</span>
-                        <span class="price">@fruit.Price.ToString("C")</span>
-                    </div>
-                </li>
+                <FruitItem Fruit="fruit"></FruitItem>
             }
         }
     </ul>

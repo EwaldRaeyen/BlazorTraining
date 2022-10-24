@@ -1,5 +1,6 @@
 ﻿@page "/fruitsalad"
 @using BlazorTraining.Models
+@using BlazorTraining.Pages.FruitSalad.Components
 @*@layout CustomLayout*@
 
 <div class="main">
@@ -8,12 +9,10 @@
         {
             @foreach (var fruit in _fruitList)
             {
-                <li style="background-image: url('@fruit.ImageUrl')">
-                    <div class="pizza-info">
-                        <span class="title">@fruit.Name</span>
-                        <span class="price">@fruit.Price.ToString("C")</span>
-                    </div>
-                </li>
+               @* <CascadingValue Value="MyFruitSalad.Fruits.Count(f => f.Name == fruit.Name)">
+                    <AddFruitItem Fruit="fruit"></AddFruitItem>
+                </CascadingValue>*@
+                <FruitItem Fruit="fruit" Count="_myFruitSalad.Fruits.Count(f => f.Name == fruit.Name)" OnClick="AddFruit"></FruitItem>
             }
         }
     </ul>
@@ -28,4 +27,12 @@
         new Fruit { Name = "Lemon", Family = "Rutaceae" , Calories = "29", Price = 1.0, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e4/Lemon.jpg/800px-Lemon.jpg?20050214195124" },
         new Fruit { Name = "Banana", Family = "Musaceae" , Calories = "89", Price = 1.0, ImageUrl = "https://upload.wikimedia.org/wikipedia/commons/thumb/7/77/Banana_d%C3%A1gua.jpg/800px-Banana_d%C3%A1gua.jpg?20210415211847" },
     };
+
+    private FruitSalad _myFruitSalad = new FruitSalad();
+
+    private void AddFruit(Fruit fruit) 
+    {
+        _myFruitSalad.Fruits.Add(fruit);
+    }
+
 }
