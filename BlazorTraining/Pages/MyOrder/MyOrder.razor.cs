@@ -7,6 +7,7 @@ namespace BlazorTraining.Pages.MyOrder
     public partial class MyOrder: ComponentBase
     {
         [Inject] public OrderState State { get; set; }
+        [Inject] public NavigationManager NavigationManager { get; set; }
 
         private IEnumerable<FruitSalad> FruitSalads => State.FruitSalads;
 

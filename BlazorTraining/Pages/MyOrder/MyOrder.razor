@@ -39,7 +39,7 @@
             <h2>Total: <span class="item-price">@FruitSalads.Select(s => s.GetPrice()).Sum().ToString("0.00")</span></h2>
         </div>
         <div class="action-row">
-            <button class="btn btn-success">Order</button>
+            <button class="btn btn-success" @onclick="@(() => NavigationManager.NavigateTo("checkout"))">Order</button>
         </div>
     }
 </div>

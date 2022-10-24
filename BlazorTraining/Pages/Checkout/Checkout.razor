@@ -1,0 +1,36 @@
+﻿@page "/checkout"
+@using BlazorTraining.Pages.Checkout.Component
+
+<div class="main">
+    <EditForm EditContext="editContext" OnValidSubmit="PlaceOrder">
+       <div class="checkout-cols">
+            <div class="checkout-order-details">
+                <div class="form-field">
+                    <label>FirstName:</label>
+                    <div>
+                        <InputText @bind-Value="_myOrder.FirstName" />
+                        <ValidationMessage For="@(() => _myOrder.FirstName)" />
+                    </div>
+                </div>
+
+                <div class="form-field">
+                    <label>LastName:</label>
+                    <div>
+                        <InputText @bind-Value="_myOrder.LastName" />
+                        <ValidationMessage For="@(() => _myOrder.LastName)" />
+                    </div>
+                </div>
+            </div>
+
+            <div class="checkout-delivery-address">
+                <AddressEditor Address="_myOrder.Address" />
+            </div>
+        </div>
+
+        <button type="submit" class="checkout-button btn btn-warning" disabled="@_isSubmitting">
+            Place order
+        </button>
+
+        <DataAnnotationsValidator />
+    </EditForm>
+</div>
