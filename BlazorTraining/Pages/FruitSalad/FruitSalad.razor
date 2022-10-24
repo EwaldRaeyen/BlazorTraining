@@ -1,8 +1,6 @@
-﻿@page "/"
+﻿@page "/fruitsalad"
 @using BlazorTraining.Models
-@using System.Globalization
-
-
+@*@layout CustomLayout*@
 
 <div class="main">
     <ul class="fruit-cards">
@@ -20,7 +18,6 @@
         }
     </ul>
 </div>
-
 
 @code {
     private List<Fruit> _fruitList = new List<Fruit>{

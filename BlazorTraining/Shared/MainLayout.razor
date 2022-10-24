@@ -1,5 +1,18 @@
 ﻿@inherits LayoutComponentBase
 
+<div class="top-bar">
+    <a class="logo" href="">
+        <img src="img/icon.png" />
+    </a>
+
+    <NavLink href="" class="nav-tab" Match="NavLinkMatch.All">
+        <div>Home</div>
+    </NavLink>
+    <NavLink href="fruitsalad" class="nav-tab" Match="NavLinkMatch.All">
+        <div>Fruit Salad</div>
+    </NavLink>
+</div>
+
 <div class="content">
     @Body
 </div>
