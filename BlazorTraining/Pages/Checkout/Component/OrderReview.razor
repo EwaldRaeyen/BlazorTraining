@@ -1,0 +1,20 @@
+﻿@using BlazorTraining.Models
+@foreach (var fruitSalad in FruitSalads)
+{
+    <p>
+        <strong>
+            @fruitSalad.GetPrice().ToString("0.00")
+        </strong>
+    </p>
+
+    <ul>
+        @foreach (var fruit in fruitSalad.Fruits.Distinct())
+        {
+            <li>+ @fruit.Name (@(fruitSalad.Fruits.Count(c => c.Name == fruit.Name)))</li>
+        }
+    </ul>
+}
+
+@code {
+    [Parameter] public IEnumerable<FruitSalad> FruitSalads { get; set; }
+}

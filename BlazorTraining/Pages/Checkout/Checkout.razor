@@ -5,6 +5,10 @@
     <EditForm EditContext="editContext" OnValidSubmit="PlaceOrder">
        <div class="checkout-cols">
             <div class="checkout-order-details">
+                <h4>Review order</h4>
+                <OrderReview FruitSalads="_myOrder.FruitSalads" />
+            </div>
+            <div class="checkout-order-details">
                 <div class="form-field">
                     <label>FirstName:</label>
                     <div>
@@ -12,7 +16,7 @@
                         <ValidationMessage For="@(() => _myOrder.FirstName)" />
                     </div>
                 </div>
-
+        
                 <div class="form-field">
                     <label>LastName:</label>
                     <div>

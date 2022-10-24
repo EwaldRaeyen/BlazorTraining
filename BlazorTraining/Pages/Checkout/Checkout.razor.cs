@@ -2,7 +2,6 @@
 using BlazorTraining.State;
 using Microsoft.AspNetCore.Components;
 using Microsoft.AspNetCore.Components.Forms;
-using System.Reflection.Emit;
 
 namespace BlazorTraining.Pages.Checkout
 {
@@ -18,6 +17,7 @@ namespace BlazorTraining.Pages.Checkout
         {
             _myOrder = new Order
             {
+                FruitSalads = State.FruitSalads,
                 FirstName = "FirstName",
                 LastName = "LastName",
                 Address = new Address

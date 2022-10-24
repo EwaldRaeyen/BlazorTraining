@@ -5,6 +5,7 @@ namespace BlazorTraining.Models
     public class Address
     {
         [Required]
+        [StringLength(maximumLength: 255, MinimumLength = 5)]
         public string Street { get; set; }
         [Required]
         public int Number { get; set; }
