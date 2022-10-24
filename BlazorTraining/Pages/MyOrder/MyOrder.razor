@@ -1,0 +1,45 @@
+﻿@page "/order"
+
+
+<div class="main">
+    @if (FruitSalads == null)
+    {
+        <text>Loading...</text>
+    }
+    else if (!FruitSalads.Any())
+    {
+        <h2>No salads placed</h2>
+        <a class="btn btn-success" href="">Order some fruit salads</a>
+    }
+    else
+    {
+        <div class="list-group orders-list">
+            @foreach (var fruitSalad in FruitSalads)
+            {
+                <div class="list-group-item">
+                    <div class="col">
+                        @foreach (var fruit in fruitSalad.Fruits.Distinct())
+                        {
+                            <p>@fruit.Name <strong>(@fruitSalad.Fruits.Count(c => c.Name == fruit.Name))</strong></p>
+                        }
+                    </div>
+                    <div class="col">
+                        <p>Amount of fruit: <strong>@fruitSalad.Fruits.Count()</strong></p>
+                    </div>
+                    <div class="col">
+                        <h5><strong class="item-price">@fruitSalad.GetPrice().ToString("0.00")</strong></h5>
+                    </div>
+                    <div class="col">
+                        <a @onclick="() => OnDelete_Click(fruitSalad)" class="delete-item">x</a>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="order-total">
+            <h2>Total: <span class="item-price">@FruitSalads.Select(s => s.GetPrice()).Sum().ToString("0.00")</span></h2>
+        </div>
+        <div class="action-row">
+            <button class="btn btn-success">Order</button>
+        </div>
+    }
+</div>

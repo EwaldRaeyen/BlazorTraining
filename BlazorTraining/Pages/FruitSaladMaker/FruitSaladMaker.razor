@@ -1,0 +1,19 @@
+﻿@page "/fruitsalad"
+@using BlazorTraining.Models
+@using BlazorTraining.Pages.FruitSaladMaker.Components
+
+
+<div class="main">
+    <ul class="fruit-cards">
+        @if (_fruitList != null)
+        {
+            @foreach (var fruit in _fruitList)
+            {
+                <FruitItem Fruit="fruit" Count="_myFruitSalad.Fruits.Count(f => f.Name == fruit.Name)" OnClick="AddFruit"></FruitItem>
+            }
+        }
+    </ul>
+    <div class="d-flex justify-content-center align-item-center mt-1">
+        <button @onclick="AddFruitSalad" class="btn btn-success">Add FruitSalad</button>
+    </div>
+</div>

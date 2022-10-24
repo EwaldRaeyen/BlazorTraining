@@ -1,5 +1,7 @@
-﻿@inherits LayoutComponentBase
-
+﻿@using BlazorTraining.State
+@inherits LayoutComponentBase
+@implements IDisposable
+@inject OrderState State
 <div class="top-bar">
     <a class="logo" href="">
         <img src="img/icon.png" />
@@ -11,8 +13,38 @@
     <NavLink href="fruitsalad" class="nav-tab" Match="NavLinkMatch.All">
         <div>Fruit Salad</div>
     </NavLink>
+    <NavLink href="order" class="nav-tab" Match="NavLinkMatch.All">
+        <div>My order @(count != 0 ? count : string.Empty)</div>
+    </NavLink>
 </div>
 
 <div class="content">
     @Body
 </div>
+
+@code {
+    private int count => State.FruitSalads.Count();
+
+    protected override void OnInitialized()
+    {
+        State.OnChange += StateHasChanged;
+        base.OnInitialized();
+    }
+
+    protected override void OnAfterRender(bool firstRender)
+    {
+        if (firstRender)
+        {
+
+        }
+        else
+        {
+
+        }
+    }
+    
+    public void Dispose() 
+    {
+        State.OnChange -= StateHasChanged;
+    }
+}

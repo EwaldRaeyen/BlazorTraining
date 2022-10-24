@@ -1,7 +1,6 @@
 ﻿@using Models
 @using System.Globalization
 
-@*<li style="background-image: url('@Fruit.ImageUrl')" @onclick="@(e => Fruit.Name = "test")">*@
 <li style="background-image: url('@Fruit.ImageUrl')" @onclick="() => OnItem_Click(Fruit)">
     <div class="fruit-info">
         <span class="title">@Fruit.Name @(Count != null ? Count : string.Empty)</span>
@@ -14,13 +13,6 @@
     [Parameter] public Fruit Fruit { get; set; }
     [Parameter] public int? Count { get; set; }
     [Parameter] public EventCallback<Fruit> OnClick { get; set; }
-    //[CascadingParameter] public int? Count { get; set; }
-
-    //private void OnItem_Click(MouseEventArgs args) 
-    //{
-    //    Fruit.Name = $"{args.ClientX} - {args.ClientY}";
-    //}
-
     private async Task OnItem_Click(Fruit fruit) 
     {
         await OnClick.InvokeAsync(Fruit);
